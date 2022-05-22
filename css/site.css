@@ -76,3 +76,16 @@ main>.container {
 #copyright {
     font-size: .8rem;
 }
+
+.Fizz {
+    color:#ff993b;
+}
+
+.Buzz {
+    color:green;
+}
+
+.FizzBuzz {
+    font-weight: bold;
+    color: red;
+}
