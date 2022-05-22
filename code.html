@@ -74,7 +74,7 @@
                         
                                 //All is good and continue
                                 //call fizzBuzz()
-                                let fizzArray = fizzBuzz(fizzValue, buzzValue);
+                                let fizzArray = fizzBuzzC(fizzValue, buzzValue);
                                 //call displayFizzBuzz()
                                 displayFizzBuzz(fizzArray);
                         
@@ -105,6 +105,58 @@
                             }
                         
                             return fizzArray;
+                        }
+                        
+                        function fizzBuzzB(fValue, bValue){
+                            
+                            let fizzArray = [];
+                            let Fizz = false;
+                            let Buzz = false;
+                        
+                            for (let index = 1; index <= 100; index++) {
+                        
+                                Fizz = index % fValue == 0;
+                                Buzz = index % bValue == 0;
+                        
+                                //Use Switch Operator to make this work
+                        
+                                switch(true){
+                                    case Fizz && Buzz:{
+                                        fizzArray.push("FizzBuzz");
+                                        break;
+                                    }
+                                    case Fizz:{
+                                        fizzArray.push("Fizz");
+                                        break;
+                                    }
+                                    case Buzz:{
+                                        fizzArray.push("Buzz");
+                                        break;
+                                    }
+                                    default:{
+                                        fizzArray.push(index);
+                                        break;
+                                    }
+                                }
+                            }
+                        
+                        
+                            return fizzArray;
+                        }
+                        
+                        function fizzBuzzC(fValue, bValue){
+                            let fizzArray = [];
+                        
+                            for (let i = 1; i <= 100; i++) {
+                        
+                                //Ternary Operator
+                                let value = ((i % fValue == 0 ? "Fizz" : "") + (i % bValue == 0 ? "Buzz" : "") || i);
+                                fizzArray.push(value);
+                                
+                            }
+                        
+                            return fizzArray;
+                        
                         }
                         
                         //Display numbers and set Classes for 'Fizz', 'Buzz' or 'FizzBuzz'
@@ -147,11 +199,15 @@
                 </pre>
             </div>
             <div class="col col-lg-4">
-                <p>The Code for Fizz Buzz is structured into three main functions.</p>
+                <p>The Code for Fizz Buzz is structured into three main functions. The second function has two optional methods of operation.</p>
                 <h5>Get Values</h5>
                 <p>Get Values is a function that grabs the Fizz and Buzz values from the input boxes on the page. It then takes those values and validates the data by first attempting to parse it into integers. If that passes the test, it calls the next function of Generate Numbers and asks for that data back.</p>
                 <h5>Fizz Buzz</h5>
                 <p>Fizz Buzz is a function whose purpose is to create an array of numbers from 1-100. It does this by looping through the numbers from 1 - 100. It then checks those number to see if the number is evenly divisible by the Fizz number, the Buzz number or both Numbers.  If it passes the test of being evenly divisible by BOTH, it changes the number to the word FizzBuzz and sets a class on it to make it bold and red. If it fails to be both, but passes the test for Fizz, the number is changed to Fizz. If it fails both of those tests, but passes the test for Buzz, the number is changed to Buzz. If it fails all of those, it adds the number itself to the array. Once it completes that task it passes the full array back to Get Values.</p>
+                <h5>Fizz Buzz B</h5>
+                <p>Fizz Buzz B creates the same array as Fizz Buzz. The primary difference is the way in which it achieves this. First it set both Fizz and Buzz to false. Then it utilizes a for loop to determine if either Fizz or Buzz if true and then takes that information and puts it into a Switch case method to evaluate which Case is true. If none of them are true it runs the default value which is to simply push the number to the array. Once it completes that task it passes the full array back to Get Values.</p>
+                <h5>Fizz Buzz C</h5>
+                <p>Fizz Buzz C creates the same array as the other two Fizz Buzz functions, but it does this using a Ternary expression which greatly shortens and simplifies the code. Bascially it does all of the evaluating within one variable and pushes that variable to the array. First it it evaluates for Fizz and if true then sets that String to Fizz otherwise empty. It repeats the same thing for Buzz but also adds those two parts together so that if they are both true, you'll get FizzBuzz. Otherwise it sets the number to the variable of Value and pushes that into the array. Then it returns the full array back to Get Values. Although this is a brilliant method, I personally prefer the Switch statement as it is easier for me to read and debug.</p>
                 <h5>Display Fizz Buzz</h5>
                 <p>Display Fizz Buzz is a functions which takes in the fizzArray created by FizzBuzz. It then loops through the array, creating HTML for each value and at the same time also determines if the value is a number, Fizz, Buzz or FizzBuzz. It adds the appropriate class based on the value. Utilizing a template tag, it then takes all of the information created and passes it to a table creating however many rows it needs to while making 5 columns.</p>
             </div>

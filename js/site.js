@@ -15,7 +15,7 @@ function getValues() {
 
         //All is good and continue
         //call fizzBuzz()
-        let fizzArray = fizzBuzz(fizzValue, buzzValue);
+        let fizzArray = fizzBuzzC(fizzValue, buzzValue);
         //call displayFizzBuzz()
         displayFizzBuzz(fizzArray);
 
@@ -46,6 +46,58 @@ function fizzBuzz(fValue, bValue) {
     }
 
     return fizzArray;
+}
+
+function fizzBuzzB(fValue, bValue){
+    
+    let fizzArray = [];
+    let Fizz = false;
+    let Buzz = false;
+
+    for (let index = 1; index <= 100; index++) {
+
+        Fizz = index % fValue == 0;
+        Buzz = index % bValue == 0;
+
+        //Use Switch Operator to make this work
+
+        switch(true){
+            case Fizz && Buzz:{
+                fizzArray.push("FizzBuzz");
+                break;
+            }
+            case Fizz:{
+                fizzArray.push("Fizz");
+                break;
+            }
+            case Buzz:{
+                fizzArray.push("Buzz");
+                break;
+            }
+            default:{
+                fizzArray.push(index);
+                break;
+            }
+        }
+    }
+
+
+    return fizzArray;
+}
+
+function fizzBuzzC(fValue, bValue){
+    let fizzArray = [];
+
+    for (let i = 1; i <= 100; i++) {
+
+        //Ternary Operator
+        let value = ((i % fValue == 0 ? "Fizz" : "") + (i % bValue == 0 ? "Buzz" : "") || i);
+        fizzArray.push(value);
+        
+    }
+
+    return fizzArray;
+
 }
 
 //Display numbers and set Classes for 'Fizz', 'Buzz' or 'FizzBuzz'
